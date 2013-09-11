@@ -22,7 +22,7 @@ namespace TimetableModel
 		{
 			base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Configurations.Add(null);
+			modelBuilder.Configurations.Add(new ClassMapping());
 		}
 	}
 }
