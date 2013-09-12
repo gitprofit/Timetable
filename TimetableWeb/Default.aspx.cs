@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using TimetableModel;
+using TimetableModel;
 
 namespace TimetableWeb
 {
@@ -12,7 +12,12 @@ namespace TimetableWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			TimetableModel.Class cl = new TimetableModel.Class();
+			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnLocal"].ConnectionString;
+
+			TimetableContext ctx = new TimetableContext(connStr);
+			var x = from Class in ctx.Classes select Class;
+
+
 			this.Page.Response.Write("lol");
 		}
 	}

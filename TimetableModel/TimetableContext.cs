@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace TimetableModel
 {
-	class TimetableContext : DbContext
+	public class TimetableContext : DbContext
 	{
 		public DbSet<Schedule> Schedules { get; set; }
 		public DbSet<Course> Courses { get; set; }

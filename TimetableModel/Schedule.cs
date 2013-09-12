@@ -18,6 +18,7 @@ namespace TimetableModel
 		public Schedule()
 		{
 			Courses = new List<Course>();
+		}
 	}
 
     class ScheduleMapping : EntityTypeConfiguration<Schedule>
