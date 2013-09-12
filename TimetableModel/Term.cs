@@ -17,10 +17,6 @@ namespace TimetableModel
 		public TimeSpan Duration { get; set; }
 
 		public virtual Class Class { get; set; }
-
-		//public Term()
-		//{
-
 	}
 
 	class TermMapping : EntityTypeConfiguration<Term>
