@@ -54,6 +54,7 @@
     <Compile Include="Schedule.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="TimetableContext.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

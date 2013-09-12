@@ -16,18 +16,23 @@ namespace TimetableModel
 		public DateTime StartDate { get; set; }
 		public TimeSpan Duration { get; set; }
 
-		public int CourseId { get; set; }
-		public virtual Course Course { get; set; }
+		public virtual Class Class { get; set; }
+
+		//public Term()
+		//{
+
 	}
 
-	class TermMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Term>
+	class TermMapping : EntityTypeConfiguration<Term>
 	{
 		public TermMapping()
 			: base()
 		{
-			//this.HasRequired(t => t.Course).
-			//this.
-			
+			this.HasRequired(t => t.Class)
+				.WithMany(t => t.Terms)
+				.Map(t => t.MapKey("ClassID"));
+
+			this.ToTable("Terms");
 		}
 	}
 }
