@@ -19,6 +19,7 @@ namespace TimetableModel
 		public ClassMapping()
 			: base()
 		{
-			this.Map
+			//this.Map
+		}
 	}
 }
