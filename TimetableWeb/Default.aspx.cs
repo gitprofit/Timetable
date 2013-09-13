@@ -15,7 +15,7 @@ namespace TimetableWeb
 			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnLocal"].ConnectionString;
 
 			TimetableContext ctx = new TimetableContext(connStr);
-			var x = from Class in ctx.Classes select Class;
+			//var x = from Class in ctx.Classes select Class;
 
 
 			this.Page.Response.Write("lol");
