@@ -17,7 +17,7 @@ namespace TimetableModel
 		public TimetableContext(string connectionString)
 			: base(connectionString)
 		{
-			Database.SetInitializer<TimetableContext>(new CreateDatabaseIfNotExists<TimetableContext>());
+			//Database.SetInitializer<TimetableContext>(new CreateDatabaseIfNotExists<TimetableContext>());
 		}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
