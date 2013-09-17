@@ -15,7 +15,7 @@ namespace TimetableModel
 
 		public Week Week { get; set; }
 		public DayOfWeek DayOfWeek { get; set; }
-		public DateTime StartDate { get; set; }
+		public TimeSpan StartTime { get; set; }
 		public TimeSpan Duration { get; set; }
 
 		public virtual Class Class { get; set; }

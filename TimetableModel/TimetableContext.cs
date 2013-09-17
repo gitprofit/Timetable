@@ -27,7 +27,7 @@ namespace TimetableModel
 			modelBuilder.Configurations.Add(new ClassMapping());
 			modelBuilder.Configurations.Add(new CourseMapping());
 			modelBuilder.Configurations.Add(new ScheduleMapping());
-			//modelBuilder.Configurations.Add(new TermMapping());
+			modelBuilder.Configurations.Add(new TermMapping());
 			//modelBuilder.Configurations.Add(new UserMapping());
 		}
 	}

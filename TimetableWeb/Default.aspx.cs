@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TimetableModel;
-using TimetableModel.Model.Northwind;
 
 namespace TimetableWeb
 {
@@ -35,6 +34,7 @@ namespace TimetableWeb
 
 		private void Test2(string connectionString)
 		{
+			/*
 			NorthwindContext north = new NorthwindContext(connectionString);
 
 			var suppliers = from Supplier in north.Suppliers
@@ -61,7 +61,7 @@ namespace TimetableWeb
 			}
 
 			Response.Write("<br /><br />");
-
+			*/
 			/*
 			foreach (var s in prod3)
 			{
@@ -76,7 +76,7 @@ namespace TimetableWeb
 
 			*/
 
-			north.Dispose();
+			//north.Dispose();
 		}
 
 
