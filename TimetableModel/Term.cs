@@ -11,6 +11,8 @@ namespace TimetableModel
 
 	public class Term
 	{
+		public int TermID { get; set; }
+
 		public Week Week { get; set; }
 		public DayOfWeek DayOfWeek { get; set; }
 		public DateTime StartDate { get; set; }

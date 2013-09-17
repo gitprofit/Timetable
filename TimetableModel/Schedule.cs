@@ -10,6 +10,8 @@ namespace TimetableModel
 {
 	public class Schedule
 	{
+		public int ScheduleID { get; set; }
+
 		public string Name { get; set; }
 
         public virtual User Owner { get; set; }
@@ -26,6 +28,7 @@ namespace TimetableModel
         public ScheduleMapping()
             : base()
         {
+			//
             this.HasRequired(t => t.Owner)
                 .WithMany(t => t.Schedules)
                 .Map(t => t.MapKey("OwnerID"));

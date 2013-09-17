@@ -9,6 +9,8 @@ namespace TimetableModel
 {
 	public class Course
 	{
+		public int CourseID { get; set; }
+
 		public string Name { get; set; }
 
         public virtual Schedule Schedule { get; set; }

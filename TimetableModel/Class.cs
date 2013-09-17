@@ -9,6 +9,8 @@ namespace TimetableModel
 {
 	public class Class
 	{
+		public int ClassID { get; set; }
+
 		public string Name { get; set; }
 		public string Instructor { get; set; }
 
