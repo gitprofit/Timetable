@@ -18,6 +18,9 @@ namespace TimetableModel
 			: base(connectionString)
 		{
 			//Database.SetInitializer<TimetableContext>(new CreateDatabaseIfNotExists<TimetableContext>());
+			//Database.SetInitializer<TimetableContext>(new DropCreateDatabaseIfModelChanges<TimetableContext>());
+
+			Database.SetInitializer<TimetableContext>(new DropCreateDatabaseAlways<TimetableContext>());
 		}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,7 +31,7 @@ namespace TimetableModel
 			modelBuilder.Configurations.Add(new CourseMapping());
 			modelBuilder.Configurations.Add(new ScheduleMapping());
 			modelBuilder.Configurations.Add(new TermMapping());
-			//modelBuilder.Configurations.Add(new UserMapping());
+			modelBuilder.Configurations.Add(new UserMapping());
 		}
 	}
 }

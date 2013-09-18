@@ -24,9 +24,6 @@ namespace TimetableWeb
 			foreach (var s in x)
 				Response.Write(s + "<br />");
 
-			//Test2(connStr);
-
-
 			this.Page.Response.Write("lol");
 		}
 
