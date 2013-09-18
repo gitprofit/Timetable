@@ -9,8 +9,8 @@ namespace TimetableModel.Repository
 	interface IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
-		IEnumerable<TEntity> getAll();
-		TEntity getById(int id);
+		IEnumerable<TEntity> GetAll();
+		TEntity GetById(int id);
 		void Add(TEntity entity);
 		void Remove(TEntity entity);
 		void Update(TEntity entity);

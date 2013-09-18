@@ -18,11 +18,18 @@ namespace TimetableWeb
 			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connStrName].ConnectionString;
 
 			ModelContext ctx = new ModelContext(connStr);
-			var x = from Class in ctx.Classes select Class.Instructor;
-
+			var rep = new TimetableModel.Repository.Crud.UserRepository(ctx);
+			var reps = new TimetableModel.Repository.Crud.ScheduleRepository(ctx);
+			var x = rep.GetAll();
+			var y = reps.GetAll();
 
 			foreach (var s in x)
-				Response.Write(s + "<br />");
+				Response.Write(s.ID + ", " + s.Username + ", " + s.Schedules.FirstOrDefault().Name + "<br />");
+
+			Response.Write("<br /><br />");
+
+			foreach (var s in y)
+				Response.Write(s.ID + ", " + s.Name + "<br />");
 
 			this.Page.Response.Write("lol");
 		}

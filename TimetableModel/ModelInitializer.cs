@@ -16,13 +16,17 @@ namespace TimetableModel
 
 			var classes = new ClassRepository(context);
 			var courses = new CourseRepository(context);
-			var schedules = new ScheduleRepository(context);
+			var schedules = new ScheduleRepository(context); 
 			var terms = new TermRepository(context);
 			var users = new UserRepository(context);
 
-			var user = new User { 
+			var user = new User { Username = "User1" };
+			var sched = new Schedule { Name = "Sched1", Owner = user };
 
-			//context.Courses.Add(
+			users.Add(user);
+			schedules.Add(sched);
+
+			context.SaveChanges();
 		}
 	}
 }

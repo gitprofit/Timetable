@@ -6,7 +6,7 @@ using TimetableModel.Domain;
 
 namespace TimetableModel.Repository.Crud
 {
-	class CrudRepository<TEntity> : IRepository<TEntity>
+	public class CrudRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
 		private ModelContext context;
@@ -16,12 +16,12 @@ namespace TimetableModel.Repository.Crud
 			this.context = context;
 		}
 
-		public IEnumerable<TEntity> getAll()
+		public IEnumerable<TEntity> GetAll()
 		{
 			return context.Set<TEntity>().ToList();
 		}
 
-		public TEntity getById(int id)
+		public TEntity GetById(int id)
 		{
 			return context.Set<TEntity>().FirstOrDefault(t => t.ID == id);
 		}
