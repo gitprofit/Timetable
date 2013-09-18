@@ -4,23 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using TimetableModel.Domain;
 
 namespace TimetableModel
 {
-	public class TimetableContext : DbContext
+	public class ModelContext : DbContext
 	{
 		public DbSet<Schedule> Schedules { get; set; }
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<Class> Classes { get; set; }
 		public DbSet<Term> Terms { get; set; }
 
-		public TimetableContext(string connectionString)
+		public ModelContext(string connectionString)
 			: base(connectionString)
 		{
-			//Database.SetInitializer<TimetableContext>(new CreateDatabaseIfNotExists<TimetableContext>());
-			//Database.SetInitializer<TimetableContext>(new DropCreateDatabaseIfModelChanges<TimetableContext>());
-
-			Database.SetInitializer<TimetableContext>(new DropCreateDatabaseAlways<TimetableContext>());
+			Database.SetInitializer<ModelContext>(new ModelInitializer());
 		}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

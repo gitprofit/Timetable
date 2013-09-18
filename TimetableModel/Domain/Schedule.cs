@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimetableModel
+namespace TimetableModel.Domain
 {
-	public class Schedule
+	public class Schedule : IEntity
 	{
-		public int ScheduleID { get; set; }
+		public int ID { get; set; }
 
 		public string Name { get; set; }
 
@@ -28,7 +29,11 @@ namespace TimetableModel
         public ScheduleMapping()
             : base()
         {
-			//
+			this.HasKey(t => t.ID)
+				.Property(t => t.ID)
+				.HasColumnName("ScheduleID")
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
             this.HasRequired(t => t.Owner)
                 .WithMany(t => t.Schedules)
                 .Map(t => t.MapKey("OwnerID"));

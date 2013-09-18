@@ -13,11 +13,11 @@ namespace TimetableWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			//string connStrName = "MySqlConn";
-			string connStrName = "MySqlConnLocal";
+			string connStrName = "MySqlConnRemote";
+			//string connStrName = "MySqlConnLocal";
 			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connStrName].ConnectionString;
 
-			TimetableContext ctx = new TimetableContext(connStr);
+			ModelContext ctx = new ModelContext(connStr);
 			var x = from Class in ctx.Classes select Class.Instructor;
 
 

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimetableModel
+namespace TimetableModel.Domain
 {
-	public class Course
+	public class Course : IEntity
 	{
-		public int CourseID { get; set; }
+		public int ID { get; set; }
 
 		public string Name { get; set; }
 
@@ -28,6 +29,11 @@ namespace TimetableModel
         public CourseMapping()
             : base()
         {
+			this.HasKey(t => t.ID)
+				.Property(t => t.ID)
+				.HasColumnName("CourseID")
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
             this.HasRequired(t => t.Schedule)
                 .WithMany(t => t.Courses)
                 .Map(t => t.MapKey("ScheduleID"));

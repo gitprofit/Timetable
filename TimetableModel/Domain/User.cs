@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimetableModel
+namespace TimetableModel.Domain
 {
-    public class User
+    public class User : IEntity
     {
-		public int UserID { get; set; }
+		public int ID { get; set; }
 
         public string Username { get; set; }
 
@@ -26,7 +27,11 @@ namespace TimetableModel
         public UserMapping()
             : base()
         {
-            //
+			this.HasKey(t => t.ID)
+				.Property(t => t.ID)
+				.HasColumnName("UserID")
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
 			this.ToTable("Users");
         }
     }

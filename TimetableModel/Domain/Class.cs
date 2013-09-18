@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimetableModel
+namespace TimetableModel.Domain
 {
-	public class Class
+	public class Class : IEntity
 	{
-		public int ClassID { get; set; }
+		public int ID { get; set; }
 
 		public string Name { get; set; }
 		public string Instructor { get; set; }
 
 		public virtual Course Course { get; set; }
-
 		public virtual ICollection<Term> Terms { get; set; }
 
 		public Class()
@@ -29,6 +29,11 @@ namespace TimetableModel
 		public ClassMapping()
 			: base()
 		{
+			this.HasKey(t => t.ID)
+				.Property(t => t.ID)
+				.HasColumnName("ClassID")
+				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
             this.HasRequired(t => t.Course)
                 .WithMany(t => t.Classes)
                 .Map(t => t.MapKey("CourseID"));
