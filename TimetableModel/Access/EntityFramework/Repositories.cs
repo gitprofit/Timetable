@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TimetableModel.Domain;
+using TimetableCore.Model;
 
-namespace TimetableModel.Repository.Crud
+namespace TimetableCore.Access.EntityFramework
 {
-	public class ClassRepository : CrudRepository<Class>
+	public class ClassRepository : EntityFrameworkRepository<Class>
 	{
 		public ClassRepository(ModelContext context)
 			: base(context) { }
 	}
 
-	public class CourseRepository : CrudRepository<Course>
+	public class CourseRepository : EntityFrameworkRepository<Course>
 	{
 		public CourseRepository(ModelContext context)
 			: base(context) { }
 	}
 
-	public class ScheduleRepository : CrudRepository<Schedule>
+	public class ScheduleRepository : EntityFrameworkRepository<Schedule>
 	{
 		public ScheduleRepository(ModelContext context)
 			: base(context) { }
 	}
 
-	public class TermRepository : CrudRepository<Term>
+	public class TermRepository : EntityFrameworkRepository<Term>
 	{
 		public TermRepository(ModelContext context)
 			: base(context) { }
 	}
 
-	public class UserRepository : CrudRepository<User>
+	public class UserRepository : EntityFrameworkRepository<User>
 	{
 		public UserRepository(ModelContext context)
 			: base(context) { }

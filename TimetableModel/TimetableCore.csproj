@@ -51,18 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Class.cs" />
-    <Compile Include="Domain\Course.cs" />
-    <Compile Include="Domain\IEntity.cs" />
-    <Compile Include="ModelInitializer.cs" />
+    <Compile Include="Access\EntityFramework\Mapping\ClassMapping.cs" />
+    <Compile Include="Access\EntityFramework\Mapping\CourseMapping.cs" />
+    <Compile Include="Access\EntityFramework\Mapping\ScheduleMapping.cs" />
+    <Compile Include="Access\EntityFramework\Mapping\TermMapping.cs" />
+    <Compile Include="Access\EntityFramework\Mapping\UserMapping.cs" />
+    <Compile Include="Model\Class.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\IEntity.cs" />
+    <Compile Include="Access\EntityFramework\ModelInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\Schedule.cs" />
-    <Compile Include="Domain\Term.cs" />
-    <Compile Include="ModelContext.cs" />
-    <Compile Include="Domain\User.cs" />
-    <Compile Include="Repository\Crud\CrudRepository.cs" />
-    <Compile Include="Repository\Crud\Repositories.cs" />
-    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Model\Schedule.cs" />
+    <Compile Include="Model\Term.cs" />
+    <Compile Include="Access\EntityFramework\ModelContext.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Access\EntityFramework\EntityFrameworkRepository.cs" />
+    <Compile Include="Access\EntityFramework\Repositories.cs" />
+    <Compile Include="Access\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -70,9 +75,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repository\Rest\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

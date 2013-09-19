@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using TimetableModel.Domain;
-using TimetableModel.Repository.Crud;
+using TimetableCore.Model;
 
-namespace TimetableModel
+namespace TimetableCore.Access.EntityFramework
 {
 	class ModelInitializer : DropCreateDatabaseAlways<ModelContext>
 	{

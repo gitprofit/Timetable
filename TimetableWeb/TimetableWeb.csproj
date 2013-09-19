@@ -92,9 +92,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimetableModel\TimetableModel.csproj">
+    <ProjectReference Include="..\TimetableModel\TimetableCore.csproj">
       <Project>{fcb44841-40cb-412f-b62d-a3362aa4a5c4}</Project>
-      <Name>TimetableModel</Name>
+      <Name>TimetableCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

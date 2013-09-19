@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using TimetableModel.Domain;
+using TimetableCore.Model;
 
-namespace TimetableModel
+namespace TimetableCore.Access.EntityFramework
 {
 	public class ModelContext : DbContext
 	{
@@ -25,11 +25,11 @@ namespace TimetableModel
 		{
 			base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Configurations.Add(new ClassMapping());
-			modelBuilder.Configurations.Add(new CourseMapping());
-			modelBuilder.Configurations.Add(new ScheduleMapping());
-			modelBuilder.Configurations.Add(new TermMapping());
-			modelBuilder.Configurations.Add(new UserMapping());
+			modelBuilder.Configurations.Add(new Mapping.ClassMapping());
+			modelBuilder.Configurations.Add(new Mapping.CourseMapping());
+			modelBuilder.Configurations.Add(new Mapping.ScheduleMapping());
+			modelBuilder.Configurations.Add(new Mapping.TermMapping());
+			modelBuilder.Configurations.Add(new Mapping.UserMapping());
 		}
 	}
 }

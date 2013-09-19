@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableWeb", "TimetableWeb\TimetableWeb.csproj", "{77D26C09-53AB-40BF-85C9-B48F6462915A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FCB44841-40CB-412F-B62D-A3362AA4A5C4} = {FCB44841-40CB-412F-B62D-A3362AA4A5C4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableModel", "TimetableModel\TimetableModel.csproj", "{FCB44841-40CB-412F-B62D-A3362AA4A5C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableCore", "TimetableModel\TimetableCore.csproj", "{FCB44841-40CB-412F-B62D-A3362AA4A5C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

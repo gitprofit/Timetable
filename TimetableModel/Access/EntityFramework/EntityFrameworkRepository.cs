@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TimetableModel.Domain;
+using TimetableCore.Model;
 
-namespace TimetableModel.Repository.Crud
+namespace TimetableCore.Access.EntityFramework
 {
-	public class CrudRepository<TEntity> : IRepository<TEntity>
+	public abstract class EntityFrameworkRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
 		private ModelContext context;
 
-		public CrudRepository(ModelContext context)
+		public EntityFrameworkRepository(ModelContext context)
 		{
 			this.context = context;
 		}

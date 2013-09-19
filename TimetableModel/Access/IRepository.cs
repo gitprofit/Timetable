@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TimetableModel.Domain;
+using TimetableCore.Model;
 
-namespace TimetableModel.Repository
+namespace TimetableCore.Access
 {
 	interface IRepository<TEntity>
 		where TEntity : class, IEntity
