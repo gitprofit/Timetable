@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="TimetableWeb.Pages.Template" %>
+<%@ Register TagPrefix="uc" TagName="Navigation" Src="/Controls/Navigation.ascx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+		<header>
+			header
+		</header>
+
+		<div>
+
+			<div>
+				<% if(Context.User.Identity.IsAuthenticated) { %>
+					<uc:Navigation runat="server" />
+				<% } %>
+			</div>
+
+			<div>
+				<asp:ContentPlaceHolder ID="MainContent" runat="server">
+				</asp:ContentPlaceHolder>
+			</div>
+
+		</div>
+
+		<footer>
+			footer
+		</footer>
+
+    </form>
+</body>
+</html>
