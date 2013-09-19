@@ -10,9 +10,9 @@ namespace TimetableCore.Model
 		public int ID { get; set; }
 
 		public string Name { get; set; }
-		public string Instructor { get; set; }
 
 		public virtual Course Course { get; set; }
+		public virtual Instructor Instructor { get; set; }
 		public virtual ICollection<Term> Terms { get; set; }
 
 		public Class()

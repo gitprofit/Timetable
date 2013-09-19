@@ -9,22 +9,22 @@ using TimetableCore.Model;
 
 namespace TimetableCore.Access.EntityFramework.Mapping
 {
-	class CourseMapping : EntityTypeConfiguration<Course>
+	class InstructorMapping : EntityTypeConfiguration<Instructor>
 	{
-		public CourseMapping()
+		public InstructorMapping()
 			: base()
 		{
 			this.HasKey(t => t.ID)
 				.Property(t => t.ID)
-				.HasColumnName("CourseID")
+				.HasColumnName("InstructorID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
 			this.Property(t => t.Name)
 				.HasColumnName("Name")
 				.HasMaxLength(32)
 				.IsRequired();
-
-			this.ToTable("Courses");
+				
+			this.ToTable("Instructors");
 		}
 	}
 }

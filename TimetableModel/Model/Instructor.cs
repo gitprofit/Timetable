@@ -5,18 +5,16 @@ using System.Text;
 
 namespace TimetableCore.Model
 {
-	public class Course : IEntity
+	public class Instructor : IEntity
 	{
 		public int ID { get; set; }
 
 		public string Name { get; set; }
 
-        public virtual ICollection<Schedule> Schedules { get; set; }
 		public virtual ICollection<Class> Classes { get; set; }
 
-		public Course()
+		public Instructor()
 		{
-			Schedules = new List<Schedule>();
 			Classes = new List<Class>();
 		}
 	}

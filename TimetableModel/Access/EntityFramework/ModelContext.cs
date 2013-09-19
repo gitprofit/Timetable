@@ -14,6 +14,8 @@ namespace TimetableCore.Access.EntityFramework
 		public DbSet<Course> Courses { get; set; }
 		public DbSet<Class> Classes { get; set; }
 		public DbSet<Term> Terms { get; set; }
+		public DbSet<Instructor> Instructors { get; set; }
+		public DbSet<User> Users { get; set; }
 
 		public ModelContext(string connectionString)
 			: base(connectionString)
@@ -27,6 +29,7 @@ namespace TimetableCore.Access.EntityFramework
 
 			modelBuilder.Configurations.Add(new Mapping.ClassMapping());
 			modelBuilder.Configurations.Add(new Mapping.CourseMapping());
+			modelBuilder.Configurations.Add(new Mapping.InstructorMapping());
 			modelBuilder.Configurations.Add(new Mapping.ScheduleMapping());
 			modelBuilder.Configurations.Add(new Mapping.TermMapping());
 			modelBuilder.Configurations.Add(new Mapping.UserMapping());

@@ -18,6 +18,12 @@ namespace TimetableCore.Access.EntityFramework
 			: base(context) { }
 	}
 
+	public class InstructorRepository : EntityFrameworkRepository<Instructor>
+	{
+		public InstructorRepository(ModelContext context)
+			: base(context) { }
+	}
+
 	public class ScheduleRepository : EntityFrameworkRepository<Schedule>
 	{
 		public ScheduleRepository(ModelContext context)

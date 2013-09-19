@@ -19,6 +19,11 @@ namespace TimetableCore.Access.EntityFramework.Mapping
 				.HasColumnName("UserID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+			this.Property(t => t.Username)
+				.HasColumnName("Username")
+				.HasMaxLength(32)
+				.IsRequired();
+				
 			this.ToTable("Users");
 		}
 	}

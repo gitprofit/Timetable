@@ -19,6 +19,15 @@ namespace TimetableCore.Access.EntityFramework.Mapping
 				.HasColumnName("ClassID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+			this.Property(t => t.Name)
+				.HasColumnName("Name")
+				.HasMaxLength(32)
+				.IsRequired();
+
+			this.HasOptional(t => t.Instructor)
+				.WithMany(t => t.Classes)
+				.Map(t => t.MapKey("InstructorID"));
+
 			this.HasRequired(t => t.Course)
 				.WithMany(t => t.Classes)
 				.Map(t => t.MapKey("CourseID"));
