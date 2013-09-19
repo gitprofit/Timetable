@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using TimetableCore.Model;
 
@@ -26,6 +27,11 @@ namespace TimetableCore.Access.EntityFramework
 			return context.Set<TEntity>().FirstOrDefault(t => t.ID == id);
 		}
 
+		public IEnumerable<TEntity> Filter(Expression<Func<TEntity, bool>> predicate)
+		{
+			return context.Set<TEntity>().Where(predicate).ToList();
+		}
+
 		public void Add(TEntity entity)
 		{
 			context.Set<TEntity>().Add(entity);
@@ -38,7 +44,7 @@ namespace TimetableCore.Access.EntityFramework
 
 		public void Update(TEntity entity)
 		{
-			throw new NotImplementedException();
+			context.Entry(entity).State = System.Data.EntityState.Modified;
 		}
 	}
 }

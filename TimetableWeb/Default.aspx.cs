@@ -5,7 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TimetableModel;
+using TimetableCore.Model;
+using TimetableCore.Access;
+using TimetableCore.Access.EntityFramework;
 
 namespace TimetableWeb
 {
@@ -13,11 +15,21 @@ namespace TimetableWeb
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string connStrName = "MySqlConnRemote";
-			//string connStrName = "MySqlConnLocal";
+			//string connStrName = "MySqlConnRemote";
+			string connStrName = "MySqlConnLocal";
 			string connStr = System.Configuration.ConfigurationManager.ConnectionStrings[connStrName].ConnectionString;
 
-			ModelContext ctx = new ModelContext(connStr);
+			var context = new ModelContext(connStr);
+
+			var terms = new TermRepository(context);
+
+			foreach (Term term in terms.GetAll())
+			{
+				Response.Write(term.ID + ", " + term.StartTime + ", " + term.Duration + ", " + term.Class.Instructor + ", " + term.Class.Name + ", " + term.Class.Course.Name + "<br />");
+			}
+
+
+			/*
 			var rep = new TimetableModel.Repository.Crud.UserRepository(ctx);
 			var reps = new TimetableModel.Repository.Crud.ScheduleRepository(ctx);
 			var x = rep.GetAll();
@@ -30,7 +42,7 @@ namespace TimetableWeb
 
 			foreach (var s in y)
 				Response.Write(s.ID + ", " + s.Name + "<br />");
-
+			*/
 			this.Page.Response.Write("lol");
 		}
 
