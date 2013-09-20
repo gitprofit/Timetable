@@ -5,10 +5,16 @@ using System.Text;
 
 namespace TimetableCore.Model
 {
-	public class Course : IEntity
+	public class Course : IEntity, INameable, IOwnable
 	{
+		// IEntity
 		public int ID { get; set; }
+
+		// INameable
 		public string Name { get; set; }
+
+		// IOwnable
+		public virtual User Owner { get; set; }
 
         public virtual ICollection<Schedule> Schedules { get; set; }
 		public virtual ICollection<Class> Classes { get; set; }

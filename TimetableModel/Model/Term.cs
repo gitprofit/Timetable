@@ -7,10 +7,13 @@ namespace TimetableCore.Model
 {
 	public enum Week { A, B };
 
-	public class Term : IEntity
+	public class Term : IEntity, IOwnable
 	{
+		// IEntity
 		public int ID { get; set; }
-		public string Name { get { return "term"; } set { return; } }
+
+		// IOwnable
+		public virtual User Owner { get; set; }
 
 		public Week Week { get; set; }
 		public DayOfWeek DayOfWeek { get; set; }

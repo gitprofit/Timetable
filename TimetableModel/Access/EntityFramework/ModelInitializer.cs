@@ -20,28 +20,28 @@ namespace TimetableCore.Access.EntityFramework
 			var terms = new TermRepository(context);
 			var users = new UserRepository(context);
 
-			var user = new User { Name = "Andrzej" };
+			var user = new User { Username = "Andrzej" };
 
-			var sched = new Schedule { Name = "Plan podstawowy", Owner = user };
+			var sched = new Schedule { Owner = user, Name = "Plan podstawowy" };
 
-			var ins1 = new Instructor { Name = "Andi Herdi" };
-			var ins2 = new Instructor { Name = "Pati Mach" };
-			var ins3 = new Instructor { Name = "Miro Baran" };
+			var ins1 = new Instructor { Owner = user, Name = "Andi Herdi" };
+			var ins2 = new Instructor { Owner = user, Name = "Pati Mach" };
+			var ins3 = new Instructor { Owner = user, Name = "Miro Baran" };
 
-			var course1 = new Course { Name = "Analiza" };
-			var class11 = new Class { Name = "Wykład", Instructor = ins3, Course = course1 };
-			var class12 = new Class { Name = "Cwiczenia", Instructor = ins3, Course = course1 };
+			var course1 = new Course { Owner = user, Name = "Analiza" };
+			var class11 = new Class { Owner = user, Name = "Wykład", Instructor = ins3, Course = course1 };
+			var class12 = new Class { Owner = user, Name = "Cwiczenia", Instructor = ins3, Course = course1 };
 			sched.Courses.Add(course1);
 
-			var course2 = new Course { Name = "Algebra" };
-			var class21 = new Class { Name = "Wykład", Instructor = ins1, Course = course2 };
-			var class22 = new Class { Name = "Cwiczenia", Instructor = ins2, Course = course2 };
+			var course2 = new Course { Owner = user, Name = "Algebra" };
+			var class21 = new Class { Owner = user, Name = "Wykład", Instructor = ins1, Course = course2 };
+			var class22 = new Class { Owner = user, Name = "Cwiczenia", Instructor = ins2, Course = course2 };
 			sched.Courses.Add(course2);
 
-			var term11 = new Term { DayOfWeek = System.DayOfWeek.Thursday, StartTime = new TimeSpan(9,0,0), Duration = new TimeSpan(3,0,0), Class = class11 };
-			var term12 = new Term { StartTime = new TimeSpan(13,30,0), Duration = new TimeSpan(1,30,0), Class = class12 };
-			var term21 = new Term { StartTime = new TimeSpan(7,30,0), Duration = new TimeSpan(3,0,0), Class = class21 };
-			var term22 = new Term { StartTime = new TimeSpan(16,0,0), Duration = new TimeSpan(2,15,0), Class = class22 };
+			var term11 = new Term { Owner = user, DayOfWeek = System.DayOfWeek.Thursday, StartTime = new TimeSpan(9, 0, 0), Duration = new TimeSpan(3, 0, 0), Class = class11 };
+			var term12 = new Term { Owner = user, StartTime = new TimeSpan(13, 30, 0), Duration = new TimeSpan(1, 30, 0), Class = class12 };
+			var term21 = new Term { Owner = user, StartTime = new TimeSpan(7, 30, 0), Duration = new TimeSpan(3, 0, 0), Class = class21 };
+			var term22 = new Term { Owner = user, StartTime = new TimeSpan(16, 0, 0), Duration = new TimeSpan(2, 15, 0), Class = class22 };
 
 			var insSeed = new[] { ins1, ins2, ins3 };
 			var coursesSeed = new[] { course1, course2 };

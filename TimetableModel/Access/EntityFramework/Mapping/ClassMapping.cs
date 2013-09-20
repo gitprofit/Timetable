@@ -24,6 +24,10 @@ namespace TimetableCore.Access.EntityFramework.Mapping
 				.HasMaxLength(32)
 				.IsRequired();
 
+			this.HasRequired(t => t.Owner)
+				.WithMany(t => t.Classes)
+				.Map(t => t.MapKey("OwnerID"));
+
 			this.HasOptional(t => t.Instructor)
 				.WithMany(t => t.Classes)
 				.Map(t => t.MapKey("InstructorID"));

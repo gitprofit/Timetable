@@ -19,6 +19,10 @@ namespace TimetableCore.Access.EntityFramework.Mapping
 				.HasColumnName("TermID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+			this.HasRequired(t => t.Owner)
+				.WithMany(t => t.Terms)
+				.Map(t => t.MapKey("OwnerID"));
+
 			this.HasRequired(t => t.Class)
 				.WithMany(t => t.Terms)
 				.Map(t => t.MapKey("ClassID"));

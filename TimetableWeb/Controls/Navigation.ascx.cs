@@ -21,6 +21,8 @@ namespace TimetableWeb.Controls
 
 		private void SeedMenu()
 		{
+			System.Diagnostics.Debug.WriteLine("Seeding Menu");
+
 			string connectionString =
 				System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
 
@@ -30,6 +32,8 @@ namespace TimetableWeb.Controls
 				var courses = new EntityFrameworkRepository<Course>(context);
 				var instructors = new EntityFrameworkRepository<Instructor>(context);
 
+				var sched = schedules.GetAll().Where(t => t.Owner.ID == 1);
+
 				SeedList<Schedule>(menuSchedules, schedules);
 				SeedList<Course>(menuCourses, courses);
 				SeedList<Instructor>(menuInstructors, instructors);
@@ -37,7 +41,7 @@ namespace TimetableWeb.Controls
 		}
 
 		private void SeedList<TEntity>(HtmlControl list, IRepository<TEntity> repository)
-			where TEntity : class, IEntity
+			where TEntity : class, IEntity, INameable
 		{
 			var entities = repository.GetAll();
 
@@ -49,7 +53,7 @@ namespace TimetableWeb.Controls
 		}
 
 		private HtmlGenericControl GetListItem<TEntity>(TEntity entity)
-			where TEntity : IEntity
+			where TEntity : IEntity, INameable
 		{
 			var item = new HtmlGenericControl("li");
 			var link = new HtmlAnchor();

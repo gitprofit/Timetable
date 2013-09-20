@@ -66,7 +66,9 @@
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Access\EntityFramework\ModelInitializer.cs" />
+    <Compile Include="Model\INameable.cs" />
     <Compile Include="Model\Instructor.cs" />
+    <Compile Include="Model\IOwnable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\Term.cs" />

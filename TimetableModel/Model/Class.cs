@@ -5,11 +5,16 @@ using System.Text;
 
 namespace TimetableCore.Model
 {
-	public class Class : IEntity
+	public class Class : IEntity, INameable, IOwnable
 	{
+		// IEntity
 		public int ID { get; set; }
 
+		// INameable
 		public string Name { get; set; }
+
+		// IOwnable
+		public virtual User Owner { get; set; }
 
 		public virtual Course Course { get; set; }
 		public virtual Instructor Instructor { get; set; }
@@ -19,5 +24,7 @@ namespace TimetableCore.Model
 		{
 			Terms = new List<Term>();
 		}
+
+		
 	}
 }
