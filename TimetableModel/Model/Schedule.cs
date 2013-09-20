@@ -8,7 +8,6 @@ namespace TimetableCore.Model
 	public class Schedule : IEntity
 	{
 		public int ID { get; set; }
-
 		public string Name { get; set; }
 
         public virtual User Owner { get; set; }

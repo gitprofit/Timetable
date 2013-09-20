@@ -10,6 +10,7 @@ namespace TimetableCore.Model
 	public class Term : IEntity
 	{
 		public int ID { get; set; }
+		public string Name { get { return "term"; } set { return; } }
 
 		public Week Week { get; set; }
 		public DayOfWeek DayOfWeek { get; set; }

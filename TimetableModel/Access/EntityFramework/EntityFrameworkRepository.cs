@@ -7,7 +7,7 @@ using TimetableCore.Model;
 
 namespace TimetableCore.Access.EntityFramework
 {
-	public abstract class EntityFrameworkRepository<TEntity> : IRepository<TEntity>
+	public class EntityFrameworkRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
 		private ModelContext context;
@@ -27,7 +27,7 @@ namespace TimetableCore.Access.EntityFramework
 			return context.Set<TEntity>().FirstOrDefault(t => t.ID == id);
 		}
 
-		public IEnumerable<TEntity> Filter(Expression<Func<TEntity, bool>> predicate)
+		public IEnumerable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate)
 		{
 			return context.Set<TEntity>().Where(predicate).ToList();
 		}

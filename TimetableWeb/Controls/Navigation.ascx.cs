@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using TimetableCore.Model;
+using TimetableCore.Access;
+using TimetableCore.Access.EntityFramework;
 
 namespace TimetableWeb.Controls
 {
@@ -11,7 +15,48 @@ namespace TimetableWeb.Controls
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			if(!IsPostBack)
+				SeedMenu();
+		}
 
+		private void SeedMenu()
+		{
+			string connectionString =
+				System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
+
+			using (ModelContext context = new ModelContext(connectionString))
+			{
+				var schedules = new EntityFrameworkRepository<Schedule>(context);
+				var courses = new EntityFrameworkRepository<Course>(context);
+				var instructors = new EntityFrameworkRepository<Instructor>(context);
+
+				SeedList<Schedule>(menuSchedules, schedules);
+				SeedList<Course>(menuCourses, courses);
+				SeedList<Instructor>(menuInstructors, instructors);
+			}
+		}
+
+		private void SeedList<TEntity>(HtmlControl list, IRepository<TEntity> repository)
+			where TEntity : class, IEntity
+		{
+			var entities = repository.GetAll();
+
+			foreach (var entity in entities)
+			{
+				var item = GetListItem<TEntity>(entity);
+				list.Controls.Add(item);
+			}
+		}
+
+		private HtmlGenericControl GetListItem<TEntity>(TEntity entity)
+			where TEntity : IEntity
+		{
+			var item = new HtmlGenericControl("li");
+			var link = new HtmlAnchor();
+			link.HRef = "#";
+			link.InnerText = entity.Name;
+			item.Controls.Add(link);
+			return item;
 		}
 	}
 }

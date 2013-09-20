@@ -20,7 +20,7 @@ namespace TimetableCore.Access.EntityFramework
 			var terms = new TermRepository(context);
 			var users = new UserRepository(context);
 
-			var user = new User { Username = "Andrzej" };
+			var user = new User { Name = "Andrzej" };
 
 			var sched = new Schedule { Name = "Plan podstawowy", Owner = user };
 
