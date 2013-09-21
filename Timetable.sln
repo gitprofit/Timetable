@@ -1,12 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableWeb", "TimetableWeb\TimetableWeb.csproj", "{77D26C09-53AB-40BF-85C9-B48F6462915A}"
 	ProjectSection(ProjectDependencies) = postProject
-		{FCB44841-40CB-412F-B62D-A3362AA4A5C4} = {FCB44841-40CB-412F-B62D-A3362AA4A5C4}
+		{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E} = {12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableCore", "TimetableModel\TimetableCore.csproj", "{FCB44841-40CB-412F-B62D-A3362AA4A5C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableWebService", "TimetableWebService\TimetableWebService.csproj", "{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimetableData", "TimetableData\TimetableData.csproj", "{FF130CC6-B7B7-4BF0-BC30-D32F56238128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +20,14 @@ Global
 		{77D26C09-53AB-40BF-85C9-B48F6462915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77D26C09-53AB-40BF-85C9-B48F6462915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77D26C09-53AB-40BF-85C9-B48F6462915A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCB44841-40CB-412F-B62D-A3362AA4A5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCB44841-40CB-412F-B62D-A3362AA4A5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCB44841-40CB-412F-B62D-A3362AA4A5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCB44841-40CB-412F-B62D-A3362AA4A5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A7E88F-9D2E-417D-8BD0-1656B7E0D13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF130CC6-B7B7-4BF0-BC30-D32F56238128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF130CC6-B7B7-4BF0-BC30-D32F56238128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF130CC6-B7B7-4BF0-BC30-D32F56238128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF130CC6-B7B7-4BF0-BC30-D32F56238128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

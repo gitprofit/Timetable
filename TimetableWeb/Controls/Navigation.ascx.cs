@@ -5,9 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using TimetableCore.Model;
-using TimetableCore.Access;
-using TimetableCore.Access.EntityFramework;
+using TimetableData.Model;
+using TimetableData.Access;
 
 namespace TimetableWeb.Controls
 {
@@ -23,9 +22,9 @@ namespace TimetableWeb.Controls
 		{
 			System.Diagnostics.Debug.WriteLine("Seeding Menu");
 
-			string connectionString =
-				System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
-
+			//string connectionString =
+			//	System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
+			/*
 			using (ModelContext context = new ModelContext(connectionString))
 			{
 				var schedules = new EntityFrameworkRepository<Schedule>(context);
@@ -38,6 +37,7 @@ namespace TimetableWeb.Controls
 				SeedList<Course>(menuCourses, courses);
 				SeedList<Instructor>(menuInstructors, instructors);
 			}
+			 * */
 		}
 
 		private void SeedList<TEntity>(HtmlControl list, IRepository<TEntity> repository)

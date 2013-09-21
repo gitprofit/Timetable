@@ -5,9 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TimetableCore.Model;
-using TimetableCore.Access;
-using TimetableCore.Access.EntityFramework;
 using System.Web.Security;
 
 namespace TimetableWeb.Pages
