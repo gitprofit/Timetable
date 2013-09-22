@@ -7,6 +7,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using TimetableData.Model;
 using TimetableData.Access;
+using TimetableData.Access.WebApi;
 
 namespace TimetableWeb.Controls
 {
@@ -21,6 +22,10 @@ namespace TimetableWeb.Controls
 		private void SeedMenu()
 		{
 			System.Diagnostics.Debug.WriteLine("Seeding Menu");
+
+			var schedules = new ScheduleRepository("http://localhost:5966");
+
+			SeedList<Schedule>(menuSchedules, schedules);
 
 			//string connectionString =
 			//	System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
