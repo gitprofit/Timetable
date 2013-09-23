@@ -21,29 +21,13 @@ namespace TimetableWeb.Controls
 
 		private void SeedMenu()
 		{
-			System.Diagnostics.Debug.WriteLine("Seeding Menu");
+			var schedules = new WebApiRepository<Schedule>("http://localhost:5966/api/");
+			var courses = new WebApiRepository<Course>("http://localhost:5966/api/");
+			var instructors = new WebApiRepository<Instructor>("http://localhost:5966/api/");
 
-			//var schedules = new ScheduleRepository("http://localhost:5966");
-			var schedules = new WebApiRepository<Schedule>("http://localhost:5966");
-
-			SeedList<Schedule>(menuSchedules, schedules);
-
-			//string connectionString =
-			//	System.Configuration.ConfigurationManager.ConnectionStrings["TimetableDbConn"].ConnectionString;
-			/*
-			using (ModelContext context = new ModelContext(connectionString))
-			{
-				var schedules = new EntityFrameworkRepository<Schedule>(context);
-				var courses = new EntityFrameworkRepository<Course>(context);
-				var instructors = new EntityFrameworkRepository<Instructor>(context);
-
-				var sched = schedules.GetAll().Where(t => t.Owner.ID == 1);
-
-				SeedList<Schedule>(menuSchedules, schedules);
-				SeedList<Course>(menuCourses, courses);
-				SeedList<Instructor>(menuInstructors, instructors);
-			}
-			 * */
+			SeedList(menuSchedules, schedules);
+			SeedList(menuCourses, courses);
+			SeedList(menuInstructors, instructors);
 		}
 
 		private void SeedList<TEntity>(HtmlControl list, IRepository<TEntity> repository)
@@ -53,12 +37,12 @@ namespace TimetableWeb.Controls
 
 			foreach (var entity in entities)
 			{
-				var item = GetListItem<TEntity>(entity);
+				var item = GetHtmlListItem<TEntity>(entity);
 				list.Controls.Add(item);
 			}
 		}
 
-		private HtmlGenericControl GetListItem<TEntity>(TEntity entity)
+		private HtmlGenericControl GetHtmlListItem<TEntity>(TEntity entity)
 			where TEntity : IEntity, INameable
 		{
 			var item = new HtmlGenericControl("li");

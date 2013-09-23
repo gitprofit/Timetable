@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {
 	public class EntityFrameworkRepository<TEntity> : TimetableCore.Data.Access.IRepository<TEntity>
-		where TEntity : class, IEntity
+		where TEntity : class, TimetableCore.Data.Model.IEntity
 	{
 		private ModelContext context;
 
@@ -45,6 +44,11 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		public void Update(TEntity entity)
 		{
 			context.Entry(entity).State = System.Data.EntityState.Modified;
+		}
+
+		public void SaveChanges()
+		{
+			context.SaveChanges();
 		}
 	}
 }

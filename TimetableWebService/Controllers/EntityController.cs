@@ -17,7 +17,8 @@ namespace TimetableWebService.Controllers
 
 		public EntityController()
 		{
-			var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnLocal"].ConnectionString;
+			var connStr =
+				System.Configuration.ConfigurationManager.ConnectionStrings["MySqlConnLocal"].ConnectionString;
 			var context = new ModelContext(connStr);
 			repository = new EntityFrameworkRepository<TEntity>(context);
 		}
@@ -31,29 +32,29 @@ namespace TimetableWebService.Controllers
 		// GET api/<controller>/5
 		public TEntity Get(int id)
 		{
-			//return "value";
-			throw new NotImplementedException();
+			return repository.GetById(id);
 		}
 
 		// POST api/<controller>
 		public void Post([FromBody]TEntity value)
 		{
+			repository.Add(value);
+			repository.SaveChanges();
 		}
 
 		// PUT api/<controller>/5
 		public void Put(int id, [FromBody]TEntity value)
 		{
+			repository.Update(value);
+			repository.SaveChanges();
 		}
 
 		// DELETE api/<controller>/5
 		public void Delete(int id)
 		{
-
+			var entity = repository.GetById(id);
+			repository.Remove(entity);
+			repository.SaveChanges();
 		}
-	}
-
-	public class ScheduleController : EntityController<Schedule>
-	{
-		//
 	}
 }

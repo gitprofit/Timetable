@@ -16,5 +16,6 @@ namespace TimetableCore.Data.Access
 		void Add(TEntity entity);
 		void Remove(TEntity entity);
 		void Update(TEntity entity);
+		void SaveChanges();
 	}
 }

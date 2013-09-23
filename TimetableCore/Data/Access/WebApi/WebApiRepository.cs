@@ -12,29 +12,32 @@ namespace TimetableCore.Data.Access.WebApi
 	public class WebApiRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
-		protected string apiServer;
-		protected string controllerName;
-		protected string apiAddress;
+		private string serviceRoot;
+		private string controllerName;
+		private string serviceUrl;
 
-		public WebApiRepository(string apiServer)
+		private HttpClient client;
+
+		public WebApiRepository(string serviceRoot)
 		{
-			this.apiServer = apiServer;
+			this.serviceRoot = serviceRoot;
 			this.controllerName = typeof(TEntity).Name;
-			this.apiAddress = apiServer + "/api/" + controllerName + "/";
+			this.serviceUrl = serviceRoot + controllerName + "/";
+
+			client = new HttpClient();
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
 
 		public virtual IEnumerable<TEntity> GetAll()
 		{
-			HttpClient client = new HttpClient();
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			HttpResponseMessage response = client.GetAsync(apiAddress).Result;
+			HttpResponseMessage response = client.GetAsync(serviceUrl).Result;
 			return response.Content.ReadAsAsync<IEnumerable<TEntity>>().Result;
-			//throw new NotImplementedException();
 		}
 
 		public TEntity GetById(int id)
 		{
-			throw new NotImplementedException();
+			HttpResponseMessage response = client.GetAsync(serviceUrl + id).Result;
+			return response.Content.ReadAsAsync<TEntity>().Result;
 		}
 
 		public IEnumerable<TEntity> GetFiltered(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
@@ -56,20 +59,10 @@ namespace TimetableCore.Data.Access.WebApi
 		{
 			throw new NotImplementedException();
 		}
-	}
 
-	public class ScheduleRepository : WebApiRepository<Schedule>
-	{
-		public ScheduleRepository(string apiServer)
-			: base(apiServer)
-		{ }
-		/*
-		public override IEnumerable<Schedule> GetAll()
+		public void SaveChanges()
 		{
-			HttpClient client = new HttpClient();
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			HttpResponseMessage response = client.GetAsync(apiAddress).Result;
-			return response.Content.ReadAsAsync<IEnumerable<Schedule>>().Result;
-		}*/
+			throw new NotImplementedException();
+		}
 	}
 }

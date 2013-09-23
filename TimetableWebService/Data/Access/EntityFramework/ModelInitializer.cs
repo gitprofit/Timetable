@@ -13,12 +13,12 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		{
 			base.Seed(context);
 
-			var classes = new ClassRepository(context);
-			var courses = new CourseRepository(context);
-			var instructors = new InstructorRepository(context);
-			var schedules = new ScheduleRepository(context); 
-			var terms = new TermRepository(context);
-			var users = new UserRepository(context);
+			var classes = new EntityFrameworkRepository<Class>(context);
+			var courses = new EntityFrameworkRepository<Course>(context);
+			var instructors = new EntityFrameworkRepository<Instructor>(context);
+			var schedules = new EntityFrameworkRepository<Schedule>(context); 
+			var terms = new EntityFrameworkRepository<Term>(context);
+			var users = new EntityFrameworkRepository<User>(context);
 
 			var user = new User { Username = "Andrzej" };
 

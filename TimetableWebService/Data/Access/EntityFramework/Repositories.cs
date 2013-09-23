@@ -6,6 +6,7 @@ using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {
+	/*
 	public class ClassRepository : EntityFrameworkRepository<Class>
 	{
 		public ClassRepository(ModelContext context)
@@ -41,4 +42,5 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		public UserRepository(ModelContext context)
 			: base(context) { }
 	}
+	 * */
 }
