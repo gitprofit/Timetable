@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework.Mapping
 {

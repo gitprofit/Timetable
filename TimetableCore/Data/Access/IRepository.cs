@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
-namespace TimetableData.Access
+namespace TimetableCore.Data.Access
 {
 	public interface IRepository<TEntity>
 		where TEntity : class, IEntity

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {

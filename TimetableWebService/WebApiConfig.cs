@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 
@@ -20,6 +21,8 @@ namespace TimetableWebService
 			//var json = config.Formatters.JsonFormatter;
 			//json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
 			config.Formatters.Remove(config.Formatters.XmlFormatter);
+			//config.Formatters.Clear();
+			//config.Formatters.Add(new JsonMediaTypeFormatter());
 		}
 	}
 }

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using TimetableData.Model;
-using TimetableData.Access;
-using TimetableData.Access.WebApi;
+using TimetableCore.Data.Model;
+using TimetableCore.Data.Access;
+using TimetableCore.Data.Access.WebApi;
 
 namespace TimetableWeb.Controls
 {
@@ -23,7 +23,8 @@ namespace TimetableWeb.Controls
 		{
 			System.Diagnostics.Debug.WriteLine("Seeding Menu");
 
-			var schedules = new ScheduleRepository("http://localhost:5966");
+			//var schedules = new ScheduleRepository("http://localhost:5966");
+			var schedules = new WebApiRepository<Schedule>("http://localhost:5966");
 
 			SeedList<Schedule>(menuSchedules, schedules);
 

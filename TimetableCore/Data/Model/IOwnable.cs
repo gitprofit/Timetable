@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimetableData.Model
+namespace TimetableCore.Data.Model
 {
-	public interface INameable
+	public interface IOwnable
 	{
-		string Name { get; set; }
+		 User Owner { get; set; } 
 	}
 }

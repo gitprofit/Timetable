@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
-namespace TimetableData.Access.WebApi
+namespace TimetableCore.Data.Access.WebApi
 {
 	public class WebApiRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
@@ -19,12 +20,16 @@ namespace TimetableData.Access.WebApi
 		{
 			this.apiServer = apiServer;
 			this.controllerName = typeof(TEntity).Name;
-			this.apiAddress = apiServer + "/api" + controllerName + "/";
+			this.apiAddress = apiServer + "/api/" + controllerName + "/";
 		}
 
 		public virtual IEnumerable<TEntity> GetAll()
 		{
-			throw new NotImplementedException();
+			HttpClient client = new HttpClient();
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			HttpResponseMessage response = client.GetAsync(apiAddress).Result;
+			return response.Content.ReadAsAsync<IEnumerable<TEntity>>().Result;
+			//throw new NotImplementedException();
 		}
 
 		public TEntity GetById(int id)
@@ -58,13 +63,13 @@ namespace TimetableData.Access.WebApi
 		public ScheduleRepository(string apiServer)
 			: base(apiServer)
 		{ }
-
+		/*
 		public override IEnumerable<Schedule> GetAll()
 		{
 			HttpClient client = new HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			HttpResponseMessage response = client.GetAsync(apiAddress).Result;
 			return response.Content.ReadAsAsync<IEnumerable<Schedule>>().Result;
-		}
+		}*/
 	}
 }

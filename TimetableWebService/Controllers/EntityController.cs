@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TimetableData.Model;
-using TimetableData.Access;
+using TimetableCore.Data.Model;
+using TimetableCore.Data.Access;
 using TimetableWebService.Data.Access.EntityFramework;
 
 namespace TimetableWebService.Controllers

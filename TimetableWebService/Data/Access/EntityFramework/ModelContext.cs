@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {

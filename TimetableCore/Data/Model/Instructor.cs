@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TimetableData.Model
+namespace TimetableCore.Data.Model
 {
 	public class Instructor : IEntity, INameable, IOwnable
 	{

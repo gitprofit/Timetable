@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using TimetableData.Model;
+using TimetableCore.Data.Model;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {
-	public class EntityFrameworkRepository<TEntity> : TimetableData.Access.IRepository<TEntity>
+	public class EntityFrameworkRepository<TEntity> : TimetableCore.Data.Access.IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
 		private ModelContext context;

@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF130CC6-B7B7-4BF0-BC30-D32F56238128}</ProjectGuid>
+    <ProjectGuid>{32D81188-F70E-45E9-A652-3532BCAFB350}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimetableData</RootNamespace>
-    <AssemblyName>TimetableData</AssemblyName>
+    <RootNamespace>TimetableCore</RootNamespace>
+    <AssemblyName>TimetableCore</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -34,23 +34,20 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access\IRepository.cs" />
-    <Compile Include="Access\WebApi\WebApiRepository.cs" />
-    <Compile Include="Model\Class.cs" />
-    <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\IEntity.cs" />
-    <Compile Include="Model\INameable.cs" />
-    <Compile Include="Model\Instructor.cs" />
-    <Compile Include="Model\IOwnable.cs" />
-    <Compile Include="Model\Schedule.cs" />
-    <Compile Include="Model\Term.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Data\Access\IRepository.cs" />
+    <Compile Include="Data\Access\WebApi\WebApiRepository.cs" />
+    <Compile Include="Data\Model\Class.cs" />
+    <Compile Include="Data\Model\Course.cs" />
+    <Compile Include="Data\Model\IEntity.cs" />
+    <Compile Include="Data\Model\INameable.cs" />
+    <Compile Include="Data\Model\Instructor.cs" />
+    <Compile Include="Data\Model\IOwnable.cs" />
+    <Compile Include="Data\Model\Schedule.cs" />
+    <Compile Include="Data\Model\Term.cs" />
+    <Compile Include="Data\Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
