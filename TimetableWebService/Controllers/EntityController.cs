@@ -32,14 +32,17 @@ namespace TimetableWebService.Controllers
 		// GET api/<controller>/5
 		public TEntity Get(int id)
 		{
-			return repository.GetById(id);
+			var entity = repository.GetById(id);
+			if (entity == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+			else return repository.GetById(id);
 		}
 
 		// POST api/<controller>
-		public void Post([FromBody]TEntity value)
+		public HttpResponseMessage Post([FromBody]TEntity value)
 		{
 			repository.Add(value);
 			repository.SaveChanges();
+			return Request.CreateResponse(HttpStatusCode.OK);
 		}
 
 		// PUT api/<controller>/5
