@@ -55,7 +55,7 @@ namespace TimetableWebService.Controllers
 		// PUT api/<controller>/5
 		public HttpResponseMessage Put(int id, [FromBody]TEntity value)
 		{
-			if (id == value.ID)
+			if (id == value.Id)
 			{
 				try
 				{

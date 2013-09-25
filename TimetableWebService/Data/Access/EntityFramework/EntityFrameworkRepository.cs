@@ -24,7 +24,7 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public TEntity GetById(int id)
 		{
-			try { return context.Set<TEntity>().First(t => t.ID == id); }
+			try { return context.Set<TEntity>().First(t => t.Id == id); }
 			catch (Exception ex) { throw new EntityNotFoundException(typeof(TEntity).Name, ex); }
 		}
 
@@ -46,12 +46,12 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public void Update(TEntity entity)
 		{
-			var oldEntity = GetById(entity.ID);
+			var oldEntity = GetById(entity.Id);
 			context.Entry(oldEntity).CurrentValues.SetValues(entity);
 			context.Entry(oldEntity).OriginalValues.SetValues(oldEntity);
 			context.Entry(oldEntity).State = System.Data.EntityState.Modified;
 			context.Entry(entity).State = System.Data.EntityState.Detached;
-		}
+		} 
 
 		public void SaveChanges()
 		{

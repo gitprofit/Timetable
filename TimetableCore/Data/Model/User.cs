@@ -7,7 +7,7 @@ namespace TimetableCore.Data.Model
 {
     public class User : IEntity
     {
-		public int ID { get; set; }
+		public int Id { get; set; }
 
         public string Username { get; set; }
 

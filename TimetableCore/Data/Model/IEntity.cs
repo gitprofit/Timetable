@@ -7,6 +7,6 @@ namespace TimetableCore.Data.Model
 {
 	public interface IEntity
 	{
-		int ID { get; set; }
+		int Id { get; set; }
 	}
 }

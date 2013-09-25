@@ -14,8 +14,8 @@ namespace TimetableWebService.Data.Access.EntityFramework.Mapping
 		public ScheduleMapping()
 			: base()
 		{
-			this.HasKey(t => t.ID)
-				.Property(t => t.ID)
+			this.HasKey(t => t.Id)
+				.Property(t => t.Id)
 				.HasColumnName("ScheduleID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 

@@ -8,7 +8,7 @@ namespace TimetableCore.Data.Model
 	public class Schedule : IEntity, INameable, IOwnable
 	{
 		// IEntity
-		public int ID { get; set; }
+		public int Id { get; set; }
 
 		// INameable
 		public string Name { get; set; }

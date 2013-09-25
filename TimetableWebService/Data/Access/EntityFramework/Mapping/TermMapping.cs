@@ -14,8 +14,8 @@ namespace TimetableWebService.Data.Access.EntityFramework.Mapping
 		public TermMapping()
 			: base()
 		{
-			this.HasKey(t => t.ID)
-				.Property(t => t.ID)
+			this.HasKey(t => t.Id)
+				.Property(t => t.Id)
 				.HasColumnName("TermID")
 				.HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 

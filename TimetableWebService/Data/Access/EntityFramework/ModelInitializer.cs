@@ -12,7 +12,7 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		protected override void Seed(ModelContext context)
 		{
 			base.Seed(context);
-			/*
+			
 			var classes = new EntityFrameworkRepository<Class>(context);
 			var courses = new EntityFrameworkRepository<Course>(context);
 			var instructors = new EntityFrameworkRepository<Instructor>(context);
@@ -55,7 +55,7 @@ namespace TimetableWebService.Data.Access.EntityFramework
 			foreach (var c in classesSeed) classes.Add(c);
 			foreach (var c in termSeed) terms.Add(c);
 			
-			*/
+			
 			context.SaveChanges();
 		}
 	}

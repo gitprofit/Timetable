@@ -10,7 +10,7 @@ namespace TimetableCore.Data.Model
 	public class Term : IEntity, IOwnable
 	{
 		// IEntity
-		public int ID { get; set; }
+		public int Id { get; set; }
 
 		// IOwnable
 		public virtual User Owner { get; set; }
