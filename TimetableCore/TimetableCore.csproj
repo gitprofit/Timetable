@@ -49,6 +49,7 @@
     <Compile Include="Data\Model\Term.cs" />
     <Compile Include="Data\Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Errors\EntityNotFoundException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

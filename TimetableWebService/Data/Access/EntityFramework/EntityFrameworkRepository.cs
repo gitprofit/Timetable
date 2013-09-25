@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using TimetableCore.Util.Errors;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {
@@ -23,7 +24,8 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public TEntity GetById(int id)
 		{
-			return context.Set<TEntity>().FirstOrDefault(t => t.ID == id);
+			try { return context.Set<TEntity>().First(t => t.ID == id); }
+			catch (Exception ex) { throw new EntityNotFoundException(typeof(TEntity).Name, ex); }
 		}
 
 		public IEnumerable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate)
@@ -38,12 +40,17 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public void Remove(TEntity entity)
 		{
-			context.Set<TEntity>().Remove(entity);
+			try { context.Set<TEntity>().Remove(entity); }
+			catch (Exception ex) { throw new EntityNotFoundException(typeof(TEntity).Name, ex); }
 		}
 
 		public void Update(TEntity entity)
 		{
-			context.Entry(entity).State = System.Data.EntityState.Modified;
+			var oldEntity = GetById(entity.ID);
+			context.Entry(oldEntity).CurrentValues.SetValues(entity);
+			context.Entry(oldEntity).OriginalValues.SetValues(oldEntity);
+			context.Entry(oldEntity).State = System.Data.EntityState.Modified;
+			context.Entry(entity).State = System.Data.EntityState.Detached;
 		}
 
 		public void SaveChanges()
