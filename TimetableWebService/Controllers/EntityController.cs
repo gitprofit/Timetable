@@ -30,11 +30,11 @@ namespace TimetableWebService.Controllers
 		}
 
 		// GET api/<controller>/5
-		public TEntity Get(int id)
+		public HttpResponseMessage Get(int id)
 		{
 			var entity = repository.GetById(id);
-			if (entity == null) throw new HttpResponseException(HttpStatusCode.NotFound);
-			else return repository.GetById(id);
+			if (entity == null) return Request.CreateResponse(HttpStatusCode.NotFound);
+			else return Request.CreateResponse(HttpStatusCode.OK, entity);
 		}
 
 		// POST api/<controller>
@@ -48,8 +48,27 @@ namespace TimetableWebService.Controllers
 		// PUT api/<controller>/5
 		public void Put(int id, [FromBody]TEntity value)
 		{
-			repository.Update(value);
+			repository.Update(id, value);
 			repository.SaveChanges();
+
+			/*
+			  var princess = context.Princesses.Find(1);
+  var rapunzel = new Princess { Id = 1, Name = "Rapunzel" };
+  var rosannella = new PrincessDto { Id = 1, Name = "Rosannella" };
+
+  // Change the current and original values by copying the values
+  // from other objects
+  var entry = context.Entry(princess);
+  entry.CurrentValues.SetValues(rapunzel);
+  entry.OriginalValues.SetValues(rosannella);
+
+  // Print out current and original values
+  Console.WriteLine("Current values:");
+  PrintValues(entry.CurrentValues);
+
+  Console.WriteLine("\nOriginal values:");
+  PrintValues(entry.OriginalValues);
+			 * */
 		}
 
 		// DELETE api/<controller>/5
