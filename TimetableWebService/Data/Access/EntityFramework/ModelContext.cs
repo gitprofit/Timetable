@@ -19,9 +19,7 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public ModelContext(string connectionString)
 			: base(connectionString)
-		{
-			Database.SetInitializer<ModelContext>(new ModelInitializer());
-		}
+		{ }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

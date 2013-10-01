@@ -78,8 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\Navigation.ascx" />
+    <Content Include="CSS\Main.css" />
+    <Content Include="CSS\Navigation.css" />
     <Content Include="Pages\Logon.aspx" />
     <Content Include="Pages\Main.aspx" />
+    <None Include="Scripts\jQuery\jquery-2.0.3.intellisense.js" />
+    <Content Include="Pages\NavTest.html" />
+    <Content Include="Scripts\Data\Access\WebApi\WebApiRepository.js" />
+    <Content Include="Scripts\jQuery\jquery-2.0.3.js" />
+    <Content Include="Scripts\jQuery\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\Controls\Navigation.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -118,6 +127,7 @@
   <ItemGroup>
     <Content Include="Pages\Template.Master" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\jQuery\jquery-2.0.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,6 +141,7 @@
       <Name>TimetableCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

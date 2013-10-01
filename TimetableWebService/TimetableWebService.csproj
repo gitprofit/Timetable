@@ -109,7 +109,6 @@
     <Compile Include="Data\Access\EntityFramework\Mapping\UserMapping.cs" />
     <Compile Include="Data\Access\EntityFramework\ModelContext.cs" />
     <Compile Include="Data\Access\EntityFramework\ModelInitializer.cs" />
-    <Compile Include="Data\Access\EntityFramework\Repositories.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

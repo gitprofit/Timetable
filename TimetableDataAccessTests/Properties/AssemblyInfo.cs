@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TimetableManualTests")]
+[assembly: AssemblyTitle("TimetableDataAccessTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TimetableManualTests")]
+[assembly: AssemblyProduct("TimetableDataAccessTests")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fdeae1e9-f924-4d0d-93c0-65b2f00045ec")]
+[assembly: Guid("9244cacf-45b4-4cad-b0dc-99dffadc55f7")]
 
 // Version information for an assembly consists of the following four values:
 //

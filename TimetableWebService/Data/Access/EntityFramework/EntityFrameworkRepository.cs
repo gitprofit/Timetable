@@ -4,13 +4,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using TimetableCore.Util.Errors;
+using TimetableCore.Data.Model;
+using TimetableCore.Data.Access;
 
 namespace TimetableWebService.Data.Access.EntityFramework
 {
-	public class EntityFrameworkRepository<TEntity> : TimetableCore.Data.Access.IRepository<TEntity>
-		where TEntity : class, TimetableCore.Data.Model.IEntity
+	public class EntityFrameworkRepository<TEntity> : IRepository<TEntity>
+		where TEntity : class, IEntity
 	{
-		private ModelContext context;
+		protected ModelContext context;
 
 		public EntityFrameworkRepository(ModelContext context)
 		{
@@ -26,11 +28,6 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		{
 			try { return context.Set<TEntity>().First(t => t.Id == id); }
 			catch (Exception ex) { throw new EntityNotFoundException(typeof(TEntity).Name, ex); }
-		}
-
-		public IEnumerable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate)
-		{
-			return context.Set<TEntity>().Where(predicate).ToList();
 		}
 
 		public void Add(TEntity entity)
@@ -56,6 +53,20 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		public void SaveChanges()
 		{
 			context.SaveChanges();
+		}
+	}
+
+	public class EntityFrameworkOwnableRepository<TOwnableEntity>
+		: EntityFrameworkRepository<TOwnableEntity>,
+		IOwnableRepository<TOwnableEntity>
+		where TOwnableEntity : class, IEntity, IOwnable
+	{
+		public EntityFrameworkOwnableRepository(ModelContext context)
+			: base(context) { }
+
+		public IEnumerable<TOwnableEntity> GetByOwner(User owner)
+		{
+			return context.Set<TOwnableEntity>().Where(t => t.Owner == owner).ToList();
 		}
 	}
 }

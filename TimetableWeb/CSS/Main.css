@@ -1,0 +1,13 @@
+﻿
+div {
+	border: 1px solid black;
+}
+
+div.centeredContent {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul {
+}

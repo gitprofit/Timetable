@@ -12,9 +12,9 @@ namespace TimetableCore.Data.Access.WebApi
 	public class WebApiRepository<TEntity> : IRepository<TEntity>
 		where TEntity : class, IEntity
 	{
-		private string serviceRoot;
-		private string controllerName;
-		private string serviceUrl;
+		protected string serviceRoot;
+		protected string controllerName;
+		protected string serviceUrl;
 
 		private HttpClient client;
 
@@ -22,13 +22,13 @@ namespace TimetableCore.Data.Access.WebApi
 		{
 			this.serviceRoot = serviceRoot;
 			this.controllerName = typeof(TEntity).Name;
-			this.serviceUrl = serviceRoot + controllerName + "/";
+			this.serviceUrl = serviceRoot + "/" + controllerName + "/";
 
 			client = new HttpClient();
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
 
-		public virtual IEnumerable<TEntity> GetAll()
+		public IEnumerable<TEntity> GetAll()
 		{
 			HttpResponseMessage response = client.GetAsync(serviceUrl).Result;
 			return response.Content.ReadAsAsync<IEnumerable<TEntity>>().Result;
@@ -40,29 +40,44 @@ namespace TimetableCore.Data.Access.WebApi
 			return response.Content.ReadAsAsync<TEntity>().Result;
 		}
 
-		public IEnumerable<TEntity> GetFiltered(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Add(TEntity entity)
 		{
-			throw new NotImplementedException();
+			HttpResponseMessage response = client.PostAsJsonAsync(serviceUrl, entity).Result;
+			if (!response.IsSuccessStatusCode)
+				throw new Exception("TODO");
 		}
 
 		public void Remove(TEntity entity)
 		{
-			throw new NotImplementedException();
+			HttpResponseMessage response = client.DeleteAsync(serviceUrl + entity.Id).Result;
+			if (!response.IsSuccessStatusCode)
+				throw new Exception("TODO");
 		}
 
 		public void Update(TEntity entity)
 		{
-			throw new NotImplementedException();
+			HttpResponseMessage response = client.PutAsJsonAsync(serviceUrl + entity.Id, entity).Result;
+			if (!response.IsSuccessStatusCode)
+				throw new Exception("TODO");
 		}
 
 		public void SaveChanges()
 		{
-			throw new NotImplementedException();
+			//
+		}
+	}
+
+	public class WebApiOwnableRepository<TOwnableEntity>
+		: WebApiRepository<TOwnableEntity>,
+		IOwnableRepository<TOwnableEntity>
+		where TOwnableEntity : class, IEntity, IOwnable
+	{
+		public WebApiOwnableRepository(string serviceRoot)
+			: base(serviceRoot) { }
+
+		public IEnumerable<TOwnableEntity> GetByOwner(User owner)
+		{
+			return base.GetAll().Where(t => t.Owner == owner);
 		}
 	}
 }

@@ -1,0 +1,24 @@
+﻿
+nav {
+	white-space: nowrap;
+	border: 5px dotted red;
+	display: block;
+	position: relative;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	position: absolute;
+	top: 0;
+}
+
+nav ul.menuLevel1 {
+	left: 0;
+}
+
+nav ul.menuLevel2 {
+	left: 100%;
+}

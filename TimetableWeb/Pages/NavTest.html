@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<link rel="stylesheet" href="/CSS/Main.css" />
+	<link rel="stylesheet" href="/CSS/Navigation.css" />
+	<script src="/Scripts/jQuery/jquery-2.0.3.js" ></script>
+	<script src="/Scripts/Controls/Navigation.js"></script>
+	<title></title>
+
+	<script>
+		$(function () {
+			var nav = new Controls.Navigation();
+			nav.bindHtml('nav');
+		});
+	</script>
+
+</head>
+<body>
+	<form id="form1" runat="server">
+
+		<header style="background-color: red">
+			<div class="centeredContent">
+				header
+			</div>
+		</header>
+
+		<div id="main">
+
+			<div class="centeredContent">
+
+				<div style="float: left">
+
+					<nav>
+
+						<ul id="menuTopLevel" class="menuLevel1">
+							<li>
+								<a href="#">Teraz</a>
+							</li>
+							<li>
+								<a href="#">Plany</a>
+								<ul id="menuSchedule" class="menuLevel2">
+									<li><a href="#">Plan podstawowy</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Przedmioty</a>
+								<ul id="menuCourse" class="menuLevel2">
+									<li><a href="#">Analiza</a></li>
+									<li><a href="#">Algebra</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Prowadzący</a>
+								<ul id="menuInstructor" class="menuLevel2">
+									<li><a href="#">Andrzej Herdegen</a></li>
+									<li><a href="#">Patryk Mach</a></li>
+									<li><a href="#">Miro Baran</a></li>
+								</ul>
+							</li>
+						</ul>
+
+					</nav>
+
+				</div>
+
+				<div style="float: left">
+					glowna tresc
+
+				</div>
+
+				<div style="clear: both"></div>
+
+			</div>
+
+		</div>
+
+		<footer>
+			<div class="centeredContent">
+				footer
+			</div>
+		</footer>
+
+	</form>
+</body>
+</html>
