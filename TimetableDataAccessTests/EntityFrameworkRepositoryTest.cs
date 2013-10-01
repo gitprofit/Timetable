@@ -18,10 +18,12 @@ namespace TimetableDataAccessTests
 		[TestInitialize]
 		public void Init()
 		{
-			WriteLine("EntityFrameworkRepoTest init!");
 			Database.SetInitializer<ModelContext>(new EntityFrameworkDbInitializer());
 
 			context = new ModelContext("Server=localhost;User Id=liszcz;Password=usFnsiUD;Database=liszcz;");
+
+			context.Database.Initialize(true);
+
 			users = new EntityFrameworkRepository<User>(context);
 		}
 
@@ -39,8 +41,8 @@ namespace TimetableDataAccessTests
 
 			var expected = new [] { "UzytkownikJeden", "UzytkownikDwa", "UzytkownikTrzy" };
 			
-			Assert.AreEqual(names.Count(), expected.Count());
-			CollectionAssert.AreEqual(names.ToList(), expected.ToList());
+			Assert.AreEqual(expected.Count(), names.Count());
+			CollectionAssert.AreEqual(expected.ToList(), names.ToList());
 		}
 
 		[TestMethod]
@@ -53,8 +55,8 @@ namespace TimetableDataAccessTests
 
 			var name = user.Username;
 			var expected = "UzytkownikJeden";
-			Assert.AreEqual(name, expected);
-			Assert.AreEqual(user.Id, id);
+			Assert.AreEqual(expected, name);
+			Assert.AreEqual(id, user.Id);
 		}
 
 		[TestMethod]
@@ -63,6 +65,53 @@ namespace TimetableDataAccessTests
 		{
 			int id = -1;
 			var user = users.GetById(id);
+		}
+
+		[TestMethod]
+		public void TestUserAdd()
+		{
+			var newUser = new User { Username = "NowyUzytkownikDoTestow" };
+			
+			users.Add(newUser);
+			users.SaveChanges();
+
+			var names = users.GetAll().Select(t => t.Username);
+
+			CollectionAssert.Contains(names.ToList(), newUser.Username);
+		}
+
+		[TestMethod]
+		public void TestUserRemove()
+		{
+			var user = users.GetById(1);
+			var names = users.GetAll().Select(t => t.Username);
+			CollectionAssert.Contains(names.ToList(), user.Username);
+
+			users.Remove(user);
+			users.SaveChanges();
+			names = users.GetAll().Select(t => t.Username);
+			CollectionAssert.DoesNotContain(names.ToList(), user.Username);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(EntityNotFoundException))]
+		public void TestUserRemoveNotFound()
+		{
+			var user = new User { Username = "NowyUzytkownikTestowy" };
+			users.Remove(user);
+		}
+
+		[TestMethod]
+		public void TestUserUpdate()
+		{
+			var user = users.GetAll().First();
+			user.Username = "ZaktualizowanyUzytkownik";
+
+			users.Update(user);
+			users.SaveChanges();
+
+			var newUser = users.GetAll().First();
+			Assert.AreEqual(user.Username, newUser.Username);
 		}
 	}
 }

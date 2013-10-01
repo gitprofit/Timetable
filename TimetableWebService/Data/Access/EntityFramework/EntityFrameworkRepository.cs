@@ -45,9 +45,6 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		{
 			var oldEntity = GetById(entity.Id);
 			context.Entry(oldEntity).CurrentValues.SetValues(entity);
-			context.Entry(oldEntity).OriginalValues.SetValues(oldEntity);
-			context.Entry(oldEntity).State = System.Data.EntityState.Modified;
-			context.Entry(entity).State = System.Data.EntityState.Detached;
 		} 
 
 		public void SaveChanges()
@@ -66,7 +63,7 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public IEnumerable<TOwnableEntity> GetByOwner(User owner)
 		{
-			return context.Set<TOwnableEntity>().Where(t => t.Owner == owner).ToList();
+			return context.Set<TOwnableEntity>().Where(t => t.Owner.Id == owner.Id).ToList();
 		}
 	}
 }
