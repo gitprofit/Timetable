@@ -25,9 +25,9 @@ namespace TimetableWeb.Controls
 			var users = new WebApiRepository<User>("http://localhost:5966/api/");
 			var user = users.GetAll().First();//users.GetById(1);
 
-			var schedules = new WebApiOwnableRepository<Schedule>("http://localhost:5966/api/");
-			var courses = new WebApiOwnableRepository<Course>("http://localhost:5966/api/");
-			var instructors = new WebApiOwnableRepository<Instructor>("http://localhost:5966/api/");
+			var schedules = new WebApiRepository<Schedule>("http://localhost:5966/api/");
+			var courses = new WebApiRepository<Course>("http://localhost:5966/api/");
+			var instructors = new WebApiRepository<Instructor>("http://localhost:5966/api/");
 
 			SeedList(menuSchedules, schedules, user);
 			SeedList(menuCourses, courses, user);
@@ -35,7 +35,7 @@ namespace TimetableWeb.Controls
 		}
 
 
-		private void SeedList<TEntity>(HtmlControl list, IOwnableRepository<TEntity> repository, User owner)
+		private void SeedList<TEntity>(HtmlControl list, IRepository<TEntity> repository, User owner)
 			where TEntity : class, IEntity, INameable, IOwnable
 		{
 			var entities = repository.GetByOwner(owner);

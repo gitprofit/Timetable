@@ -50,6 +50,7 @@
     <Compile Include="Data\Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Errors\EntityNotFoundException.cs" />
+    <Compile Include="Util\Errors\EntityNotOwnableException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

@@ -24,6 +24,14 @@ namespace TimetableWebService.Controllers
 			repository = new EntityFrameworkRepository<TEntity>(context);
 		}
 
+		// testing purposes only,
+		// use DI, inject repository
+		public EntityController(string connStr)
+		{
+			var context = new ModelContext(connStr);
+			repository = new EntityFrameworkRepository<TEntity>(context);
+		}
+
 		// GET api/<controller>
 		public IEnumerable<TEntity> Get()
 		{

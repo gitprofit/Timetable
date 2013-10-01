@@ -40,6 +40,11 @@ namespace TimetableCore.Data.Access.WebApi
 			return response.Content.ReadAsAsync<TEntity>().Result;
 		}
 
+		public IEnumerable<TEntity> GetByOwner(User owner)
+		{
+			throw new NotImplementedException();
+		}
+
 		public void Add(TEntity entity)
 		{
 			HttpResponseMessage response = client.PostAsJsonAsync(serviceUrl, entity).Result;
@@ -64,20 +69,6 @@ namespace TimetableCore.Data.Access.WebApi
 		public void SaveChanges()
 		{
 			//
-		}
-	}
-
-	public class WebApiOwnableRepository<TOwnableEntity>
-		: WebApiRepository<TOwnableEntity>,
-		IOwnableRepository<TOwnableEntity>
-		where TOwnableEntity : class, IEntity, IOwnable
-	{
-		public WebApiOwnableRepository(string serviceRoot)
-			: base(serviceRoot) { }
-
-		public IEnumerable<TOwnableEntity> GetByOwner(User owner)
-		{
-			return base.GetAll().Where(t => t.Owner == owner);
 		}
 	}
 }

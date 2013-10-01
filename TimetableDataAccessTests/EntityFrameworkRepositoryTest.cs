@@ -113,5 +113,30 @@ namespace TimetableDataAccessTests
 			var newUser = users.GetAll().First();
 			Assert.AreEqual(user.Username, newUser.Username);
 		}
+
+		[TestMethod]
+		public void TestInstructorGetByOwner()
+		{
+			var instructors = new EntityFrameworkRepository<Instructor>(context);
+
+			var owner = users.GetAll().Where(t => t.Username == "UzytkownikTrzy").First();
+			Assert.IsNotNull(owner);
+
+			var ins = instructors.GetByOwner(owner);
+			var names = ins.Select(t => t.Name);
+			var expected = new[] { "Prowadzacy Szesc", "Prowadzacy Siedem", "Prowadzacy Osiem" };
+
+			CollectionAssert.AreEqual(expected.ToList(), names.ToList());
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(EntityNotOwnableException))]
+		public void TestUserGetByOwner()
+		{
+			var owner = users.GetAll().Where(t => t.Username == "UzytkownikTrzy").First();
+			Assert.IsNotNull(owner);
+
+			var user = users.GetByOwner(owner);
+		}
 	}
 }

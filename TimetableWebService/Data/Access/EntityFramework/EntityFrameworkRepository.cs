@@ -30,6 +30,24 @@ namespace TimetableWebService.Data.Access.EntityFramework
 			catch (Exception ex) { throw new EntityNotFoundException(typeof(TEntity).Name, ex); }
 		}
 
+		public IEnumerable<TEntity> GetByOwner(User owner)
+		{
+			try
+			{
+				return
+					context.Set<TEntity>()
+					.ToList()
+					.Cast<IOwnable>()
+					.Where(t => t.Owner.Id == owner.Id)
+					.Cast<TEntity>()
+					.ToList();
+			}
+			catch (Exception ex)
+			{
+				throw new EntityNotOwnableException(typeof(TEntity).Name, ex);
+			}
+		}
+
 		public void Add(TEntity entity)
 		{
 			context.Set<TEntity>().Add(entity);
@@ -50,20 +68,6 @@ namespace TimetableWebService.Data.Access.EntityFramework
 		public void SaveChanges()
 		{
 			context.SaveChanges();
-		}
-	}
-
-	public class EntityFrameworkOwnableRepository<TOwnableEntity>
-		: EntityFrameworkRepository<TOwnableEntity>,
-		IOwnableRepository<TOwnableEntity>
-		where TOwnableEntity : class, IEntity, IOwnable
-	{
-		public EntityFrameworkOwnableRepository(ModelContext context)
-			: base(context) { }
-
-		public IEnumerable<TOwnableEntity> GetByOwner(User owner)
-		{
-			return context.Set<TOwnableEntity>().Where(t => t.Owner.Id == owner.Id).ToList();
 		}
 	}
 }

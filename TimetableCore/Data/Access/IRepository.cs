@@ -12,17 +12,10 @@ namespace TimetableCore.Data.Access
 	{
 		IEnumerable<TEntity> GetAll();
 		TEntity GetById(int id);
-		//IEnumerable<TEntity> GetByOwner(User owner);
-		//IEnumerable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate);
+		IEnumerable<TEntity> GetByOwner(User owner);
 		void Add(TEntity entity);
 		void Remove(TEntity entity);
 		void Update(TEntity entity);
 		void SaveChanges();
-	}
-
-	public interface IOwnableRepository<TOwnableEntity> : IRepository<TOwnableEntity>
-		where TOwnableEntity : class, IEntity, IOwnable
-	{
-		IEnumerable<TOwnableEntity> GetByOwner(User owner);
 	}
 }
