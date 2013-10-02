@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Errors\EntityNotFoundException.cs" />
     <Compile Include="Util\Errors\EntityNotOwnableException.cs" />
+    <Compile Include="Util\Errors\EntityPersistenceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

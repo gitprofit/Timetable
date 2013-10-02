@@ -19,9 +19,7 @@ namespace TimetableDataAccessTests
 		public void Init()
 		{
 			Database.SetInitializer<ModelContext>(new EntityFrameworkDbInitializer());
-
 			context = new ModelContext("Server=localhost;User Id=liszcz;Password=usFnsiUD;Database=liszcz;");
-
 			context.Database.Initialize(true);
 
 			users = new EntityFrameworkRepository<User>(context);
@@ -137,6 +135,35 @@ namespace TimetableDataAccessTests
 			Assert.IsNotNull(owner);
 
 			var user = users.GetByOwner(owner);
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(EntityPersistenceException))]
+		public void TestCourseAddWithoutRequiredFK()
+		{
+			var courses = new EntityFrameworkRepository<Course>(context);
+
+			var newCourse = new Course { Name = "Testowe zajecia" };
+
+			courses.Add(newCourse);
+			courses.SaveChanges();
+		}
+
+		[TestMethod]
+
+		public void TestCourseAddWithRequiredFK()
+		{
+			var courses = new EntityFrameworkRepository<Course>(context);
+			var owner = users.GetById(1);
+
+			var newCourse = new Course { Name = "Testowe zajecia", Owner = owner };
+
+			courses.Add(newCourse);
+			courses.SaveChanges();
+
+			var addedCourse = courses.GetByOwner(owner).Where(t => t.Name == newCourse.Name).First();
+			Assert.IsNotNull(addedCourse);
+			Assert.AreEqual(newCourse.Owner.Id, addedCourse.Owner.Id);
 		}
 	}
 }

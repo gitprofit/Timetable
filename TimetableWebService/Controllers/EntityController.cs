@@ -24,12 +24,9 @@ namespace TimetableWebService.Controllers
 			repository = new EntityFrameworkRepository<TEntity>(context);
 		}
 
-		// testing purposes only,
-		// use DI, inject repository
-		public EntityController(string connStr)
+		public EntityController(IRepository<TEntity> repository)
 		{
-			var context = new ModelContext(connStr);
-			repository = new EntityFrameworkRepository<TEntity>(context);
+			this.repository = repository;
 		}
 
 		// GET api/<controller>
@@ -39,25 +36,28 @@ namespace TimetableWebService.Controllers
 		}
 
 		// GET api/<controller>/5
-		public HttpResponseMessage Get(int id)
+		public TEntity Get(int id)
 		{
-			try
-			{
-				var entity = repository.GetById(id);
-				return Request.CreateResponse(HttpStatusCode.OK, entity);
-			}
+			try { return repository.GetById(id); }
 			catch(EntityNotFoundException)
 			{
-				return Request.CreateResponse(HttpStatusCode.NotFound);
+				throw new HttpResponseException(HttpStatusCode.NotFound);
 			}
 		}
 
 		// POST api/<controller>
 		public HttpResponseMessage Post([FromBody]TEntity value)
 		{
-			repository.Add(value);
-			repository.SaveChanges();
-			return Request.CreateResponse(HttpStatusCode.OK);
+			try
+			{
+				repository.Add(value);
+				repository.SaveChanges();
+				return Request.CreateResponse(HttpStatusCode.OK);
+			}
+			catch (EntityPersistenceException)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest);
+			}
 		}
 
 		// PUT api/<controller>/5

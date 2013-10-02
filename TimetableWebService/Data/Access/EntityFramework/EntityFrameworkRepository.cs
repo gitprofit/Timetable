@@ -67,7 +67,12 @@ namespace TimetableWebService.Data.Access.EntityFramework
 
 		public void SaveChanges()
 		{
-			context.SaveChanges();
+			try { context.SaveChanges(); }
+			catch (Exception ex)
+			{
+				throw new EntityPersistenceException(ex);
+			}
+				
 		}
 	}
 }
